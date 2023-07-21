@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {add} from "../store/cartSlice"
+import { add } from "../store/cartSlice";
 export const Products = () => {
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
@@ -14,9 +14,9 @@ export const Products = () => {
     };
     fetchProducts();
   }, []);
-  const handleAdd = (products)=>{
-    dispatch(add(products));
-  }
+  const handleAdd = (product) => {
+    dispatch(add(product));
+  };
   return (
     <div className="productsWrapper">
       {products.length === 0 ? (
