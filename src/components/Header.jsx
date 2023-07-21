@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 const Header = () => {
-  const items = useSelector((state) => state.cart);
+  const items = useSelector((state) => state.cart.addedItems);
+  
   return (
     <div className="container mx-auto py-5 flex justify-between">
       <Link to="/">

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { add } from "../store/cartSlice";
 import { successToast } from "../config/toastify.config";
-
+import { getData } from "../store/cartSlice";
 export const Products = () => {
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
@@ -11,6 +11,7 @@ export const Products = () => {
     const fetchProducts = async () => {
       const response = await fetch("https://fakestoreapi.com/products");
       const data = await response.json();
+      dispatch(getData(data));
       setProducts(data);
     };
     fetchProducts();

@@ -2,10 +2,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { remove } from "../store/cartSlice";
 import { errorToast } from "../config/toastify.config";
 const Cart = () => {
-  const items = useSelector((state) => state.cart);
+  const items = useSelector((state) => state.cart.addedItems);
   const dispatch = useDispatch();
   const removeItem = (item) => {
     dispatch(remove(item));
+    errorToast("removed successfully");
   };
   return (
     <div className="container mx-auto py-5">
@@ -23,7 +24,6 @@ const Cart = () => {
                 className="btn"
                 onClick={() => {
                   removeItem(product.id);
-                  errorToast("removed successfully");
                 }}
               >
                 remove
