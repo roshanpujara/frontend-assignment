@@ -8,6 +8,7 @@ Technologies used:
 - reduxjs toolkit
 - axios
 - tailwindcss
+- react-toastify
 
   # TO RUN LOCALLY
 
