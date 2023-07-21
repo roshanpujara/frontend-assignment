@@ -1,5 +1,5 @@
 const Cart = () => {
-  return <div>Cart</div>;
+  return <div className="container mx-auto py-5">Cart</div>;
 };
 
 export default Cart;
