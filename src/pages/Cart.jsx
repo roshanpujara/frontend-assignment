@@ -8,6 +8,13 @@ const Cart = () => {
     dispatch(remove(item));
     errorToast("removed successfully");
   };
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    items.forEach((item) => {
+      totalPrice += item.price;
+    });
+    return totalPrice;
+  };
   return (
     <div className="container mx-auto py-5">
       <h4 className="welcome-text font-bold">Your added items </h4>
@@ -32,6 +39,11 @@ const Cart = () => {
           ))
         )}
       </div>
+      {items.length > 0 && (
+        <h1 className="bg-cyan-200 flex flex-row-reverse">
+          Total price: $ {calculateTotalPrice()}
+        </h1>
+      )}
     </div>
   );
 };
