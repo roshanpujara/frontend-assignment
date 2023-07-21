@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Header = () => {
+  const items = useSelector((state) => state.cart);
   return (
     <div className="container mx-auto py-5 flex justify-between">
       <Link to="/">
@@ -12,7 +14,7 @@ const Header = () => {
         <Link className="navlink" to="/cart">
           Cart
         </Link>
-        <span className="cartCount">Cart items: 10</span>
+        <span className="cartCount">Cart {items.length}</span>
       </div>
     </div>
   );
