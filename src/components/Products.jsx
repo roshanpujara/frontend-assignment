@@ -1,18 +1,19 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { add } from "../store/cartSlice";
 import { successToast } from "../config/toastify.config";
 import { getData } from "../store/cartSlice";
 export const Products = () => {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
+  const items = useSelector((state) => state.cart.products);
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await fetch("https://fakestoreapi.com/products");
       const data = await response.json();
       dispatch(getData(data));
-      setProducts(data);
+      
     };
     fetchProducts();
   }, []);
@@ -23,10 +24,10 @@ export const Products = () => {
   };
   return (
     <div className="productsWrapper">
-      {products.length === 0 ? (
+      {items.length === 0 ? (
         <span style={{ color: "red" }}>loading...</span>
       ) : (
-        products.map((value) => {
+        items.map((value) => {
           return (
             <div className="card" key={value.id}>
               <Link to={"/detail/" + value.id}>
