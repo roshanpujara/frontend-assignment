@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { add } from "../store/cartSlice";
+import { successToast } from "../config/toastify.config";
+
 export const Products = () => {
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
@@ -10,12 +12,13 @@ export const Products = () => {
       const response = await fetch("https://fakestoreapi.com/products");
       const data = await response.json();
       setProducts(data);
-      console.log(products);
     };
     fetchProducts();
   }, []);
   const handleAdd = (product) => {
     dispatch(add(product));
+
+    successToast("successfully added to cart");
   };
   return (
     <div className="productsWrapper">

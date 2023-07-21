@@ -111,7 +111,8 @@ body{
   .detail-right{
     display:flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 2rem;
   }
   .footer{
     border-radius: 15px;
